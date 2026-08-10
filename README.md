@@ -86,7 +86,7 @@ To view or make enhancements to this PCB design using EasyEDA Pro:
 
 ### Totals
 - **Components only:** ~$3.50 (LCSC parts)
-- **PCB + Assembly (5 boards):** ~$25.97 (JLCPCB)
+- **PCB + Assembly (5 boards):** ~$35.97 (JLCPCB)
 
 **Credits**
  This porject Uses :
