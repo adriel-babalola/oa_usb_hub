@@ -26,6 +26,8 @@ The flow goes like : an upstream port > SL2.1S > 4 downstream ports. power and d
 **PCB**
 Designed in EasyEDA, a two layer PCB. The board uses a copper pour strategy of 5V on the top layer and ground on the bottom layer, to cleanly connect all the power and ground pads without messy individual traces.
 
+**EasyEDA Link**: [https://oshwlab.com/adrielbabalola/project_bbkpbvgo](https://oshwlab.com/adrielbabalola/project_bbkpbvgo)
+
 **NOTE !***
 To view or make enhancements to this PCB design using EasyEDA Pro:
 - Clone or download this repository to your local machine.Open EasyEDA Pro in your browser or desktop app and log in.
