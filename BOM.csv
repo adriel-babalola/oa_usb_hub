@@ -1,8 +1,14 @@
-No.,Quantity,Comment,Designator,Footprint,Value,Manufacturer Part,Manufacturer,Supplier Part,Supplier
-1,8,1 µF Decoupling Capacitor,C1 C2 C3 C4 C5 C6 C9 C10,C0603,,,,C?,LCSC
-2,3,100 nF Decoupling Capacitor,C7 C8 C11,C0603,,,,C?,LCSC
-3,2,5.1 kΩ Pull-Down Resistor,R1 R2,R0603,,,,C?,LCSC
-4,4,56 kΩ Pull-Up Resistor,R3 R4 R5 R6,R0603,,,,C?,LCSC
-5,1,SL2.1S USB Hub IC,U1,SSOP-16,SL2.1s,SL2.1s,CoreChips,C2684433,LCSC
-6,3,USB Type-C 16PIN Receptacle,USB1 USB2 USB5,USB-C-SMD_TYPE-C-16PIN-2MD-073,TYPE-C 16PIN 2MD(073),TYPE-C 16PIN 2MD(073),SHOU HAN,C2765186,LCSC
-7,2,USB Type-A 10.0 QHHTZB6.3 Receptacle,USB3 USB4,USB-A-TH_10.0QHHTZB6.3,10.0 QHHTZB6.3,10.0 QHHTZB6.3,SHOU HAN,C668591,LCSC
+Category,Component,Value,Qty,Designator,Part Number,Supplier,Unit Cost (USD),Total Cost (USD),Notes
+ICs & Chips,USB Hub IC,SL2.1S,1,U1,C2684433,LCSC,1.20,1.20,CoreChips - port splitting engine
+Clock Crystals,Crystal Resonator,12MHz 20pF,1,X1,C9002,LCSC,0.15,0.15,3225 SMD package
+Connectors,USB Type-C Receptacle,16-PIN SMD,3,USB1/2/5,C2765186,LCSC,0.50,1.50,1 upstream + 2 downstream
+Connectors,USB Type-A Receptacle,10.0 QHHTZB6.3,2,USB3/4,C668591,LCSC,0.30,0.60,2 downstream horizontal
+Resistors,Pull-Down Resistor,5.1 kΩ 0603,2,R1/2,C14677,LCSC,0.01,0.02,Upstream CC pins
+Resistors,Pull-Up Resistor,56 kΩ 0603,4,R3-R6,C23206,LCSC,0.01,0.04,Downstream CC pins
+Capacitors,Decoupling Capacitor,1 µF 0603,8,C1-C6/C9-C10,C15849,LCSC,0.02,0.16,Bulk power distribution
+Capacitors,Decoupling Capacitor,100 nF 0603,3,C7/C8/C11,C14663,LCSC,0.01,0.03,High-frequency noise filtering
+Capacitors,Crystal Load Capacitor,33 pF 0603,2,C14/C15,C1663,LCSC,0.02,0.04,Crystal load matching
+Manufacturing,PCB Fabrication,2-layer 1.6mm Blue,5,—,—,PCBWay,4.00,4.00,5 boards HASL finish
+Manufacturing,PCBA Assembly,Economic SMT Top-side,2,—,—,PCBWay,26.30,26.30,Automated assembly service
+Manufacturing,3D Case Enclosure,Custom Housing,1,—,—,3D Vendor,15.00,15.00,Custom CAD printed case
+,,,,,,,TOTAL COST,49.04,Complete USB Hub with Enclosure

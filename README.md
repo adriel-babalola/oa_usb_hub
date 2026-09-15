@@ -1,99 +1,96 @@
 # Oa : USB Hub
 
-![alt text](image.png)
+![alt text](assets/image.png)
 
 ![EasyEDA](https://img.shields.io/badge/EasyEDA-Blue?style=for-the-badge&logo=easyeda&logoColor=white)
 ![PCB](https://img.shields.io/badge/PCB-Custom_Design-orange?style=for-the-badge)
 ![PCBA](https://img.shields.io/badge/PCBA-JLCPCB-green?style=for-the-badge)
 
-**Oa** : a USB hub inspired by the green lantern's homeworld, Oa.
+**Oa** : A USB hub inspired by the Green Lantern's homeworld, Oa.
 
-It takes a single upstream port, feeds the data through an SL2.1S hub IC, and splits it out to 4 downstream USB ports. the config is 2 USB Type C and 2 USB Type A connectors, giving you flexibility in what you can plug in.
-I built this to learn EasyEDA since i was coming from KiCad and wanted to expand my toolkit. figured a USB hub was the perfect project.
+It takes a single upstream port, feeds the data through an SL2.1S hub IC, and splits it out to 4 downstream USB ports. The configuration features 2 USB Type-C and 2 USB Type-A downstream ports, giving you flexibility in what you can plug in. 
 
-The flow goes like : an upstream port > SL2.1S > 4 downstream ports. power and data all properly routed.
+I built this to learn EasyEDA since I was transitioning from KiCad and wanted to expand my toolset. A USB hub felt like the perfect practical project.
+
+The architecture flows cleanly from: Upstream Port ➔ SL2.1S Hub IC ➔ 4 Downstream Ports with all power distribution and differential data lines properly routed.
 
 **Components:**
 
-- **SL2.1S Hub IC** (C2684433) : the brain. splits one USB port into four.
-- **USB Type C Connectors** (C2765186) : 1 upstream, 2 downstream.
-- **USB Type A Connectors** (C668591) : 2 downstream. 
-- **5.1 kΩ Pull-Down Resistors** : for the upstream Type C CC pins. 
-- **56 kΩ Pull-Up Resistors** : for the downstream Type C CC pins. it negotiates power delivery on the downstream side.
-- **1 µF Decoupling Capacitors** : smooths power on each port and the IC.
-- **100 nF Decoupling Capacitors** : filters high-frequency noise on the IC's internal rails.
+- **SL2.1S Hub IC** (C2684433): The brain. Splits one USB port into four downstream paths.
+- **12 MHz Crystal Oscillator** (C9002): Provides a stable clock reference essential for reliable USB data transaction timing.
+- **USB Type-C Connectors** (C2765186): 1 upstream input, 2 downstream outputs.
+- **USB Type-A Connectors** (C668591): 2 downstream outputs. 
+- **5.1 kΩ Pull-Down Resistors** (C14677): Form the necessary voltage dividers on the upstream Type-C CC pins to establish a device connection. 
+- **56 kΩ Pull-Up Resistors** (C23206): Positioned on the downstream Type-C CC lines to signal host capabilities and negotiate downstream power delivery.
+- **1 µF Decoupling Capacitors** (C15849): Provides bulk capacitance to smooth out low-frequency noise across power rails.
+- **100 nF Decoupling Capacitors** (C14663): High-frequency noise filtering positioned close to the IC power inputs.
+- **33 pF Load Capacitors** (C1663): Symmetrical load balancing connected to Ground on the XI and XOUT crystal lines to ensure clock precision.
 
-**PCB**
-Designed in EasyEDA, a two layer PCB. The board uses a copper pour strategy of 5V on the top layer and ground on the bottom layer, to cleanly connect all the power and ground pads without messy individual traces.
+**PCB Design**
+Designed as a standard 2-layer FR4 board in EasyEDA. The board leverages a split copper plane strategy consisting of a 5V copper pour on the top layer and a solid Ground (GND) pour on the bottom layer. This setup handles power distribution effortlessly and reduces signal loop areas without messy, individual power traces.
 
 **EasyEDA Link**: [https://oshwlab.com/adrielbabalola/project_bbkpbvgo](https://oshwlab.com/adrielbabalola/project_bbkpbvgo)
 
-**NOTE !***
-To view or make enhancements to this PCB design using EasyEDA Pro:
-- Clone or download this repository to your local machine.Open EasyEDA Pro in your browser or desktop app and log in.
-- Click File (F) > Open > EasyEDA... (or Import >EasyEDA) and select the .epro file inside the pcb/ directory.
+**NOTE!**
+To view or enhance this PCB design using EasyEDA Pro:
+- Clone or download this repository to your local machine.
+- Open EasyEDA Pro in your browser or desktop app and log in.
+- Click **File (F) > Open > EasyEDA...** (or Import > EasyEDA) and select the `.epro` file inside the `pcb/` directory.
 
+---
 
 **Schematics**
 
-![alt text](image-1.png)
+![alt text](assets/schematic1.png)
 
-**PCB Layers**
+**PCB Layout**
 
-**Top Layer (+5v)**
+![alt text](assets/pcb.png)
 
-![alt text](image-2.png)
-
-**Bottom Layer (Ground)**
-
-![alt text](image-3.png)
-
-**Top**
-
-![alt text](image-4.png)
-
-**CAD**
+**CAD Enclosure**
 
 **CASE**
-![alt text](case.png)
+![alt text](assets/case.png)
 
 **Base**
-![alt text](base.png)
+![alt text](assets/base.png)
 
 **LID**
-![alt text](lid.png)
+![alt text](assets/lid.png)
 
-**JLCPCB PCBA Quote**
-![alt text](image-5.png)
+**PCBWay PCBA Quote**
 
+![alt text](./assets/pcbway_quote.png)
 
-## Bill of Materials
+---
+## BOM
 
-| Component | Value | Qty | Designator | Part Number | Supplier | Notes |
-|-----------|-------|-----|-----------|------------|----------|-------|
-| **ICs & Chips** |
-| USB Hub IC | SL2.1S | 1 | U1 | C2684433 | LCSC | CoreChips  the brain of the hub |
-| **Connectors** |
-| USB Type-C Receptacle | TYPE-C 16PIN 2MD(073) | 3 | USB1, USB2, USB5 | C2765186 | LCSC | 1 upstream + 2 downstream |
-| USB Type-A Receptacle | 10.0 QHHTZB6.3 | 2 | USB3, USB4 | C668591 | LCSC | 2 downstream |
-| **Resistors** |
-| Pull-Down Resistor | 5.1 kΩ | 2 | R1, R2 | — | LCSC | USB-C upstream CC pins |
-| Pull-Up Resistor | 56 kΩ | 4 | R3, R4, R5, R6 | — | LCSC | USB-C downstream CC pins |
-| **Capacitors** |
-| Decoupling Capacitor | 1 µF | 8 | C1, C2, C3, C4, C5, C6, C9, C10 | — | LCSC | Bulk decoupling on power rails |
-| Decoupling Capacitor | 100 nF | 3 | C7, C8, C11 | — | LCSC | High-frequency noise filtering on IC |
-| **Manufacturing** |
-| PCB Fabrication | 2-layer | 5 | — | — | JLCPCB | Green, 1.6mm thickness, HASL |
-| PCBA Assembly | SMT Assembly | 2 | — | — | JLCPCB | Top-side assembly |
+| Category | Component | Value | Qty | Part # | Supplier | Unit Cost | Total Cost | Notes |
+|----------|-----------|-------|-----|--------|----------|-----------|-----------|-------|
+| ICs & Chips | USB Hub IC | SL2.1S | 1 | C2684433 | LCSC | $1.20 | $1.20 | CoreChips engine |
+| Clock Crystals | Crystal Resonator | 12MHz 20pF | 1 | C9002 | LCSC | $0.15 | $0.15 | 3225 SMD |
+| Connectors | USB Type-C Receptacle | 16-PIN SMD | 3 | C2765186 | LCSC | $0.50 | $1.50 | 1 up + 2 down |
+| Connectors | USB Type-A Receptacle | 10.0 QHHTZB6.3 | 2 | C668591 | LCSC | $0.30 | $0.60 | 2 downstream |
+| Resistors | Pull-Down Resistor | 5.1 kΩ | 2 | C14677 | LCSC | $0.01 | $0.02 | Upstream CC |
+| Resistors | Pull-Up Resistor | 56 kΩ | 4 | C23206 | LCSC | $0.01 | $0.04 | Downstream CC |
+| Capacitors | Decoupling Capacitor | 1 µF | 8 | C15849 | LCSC | $0.02 | $0.16 | Power dist |
+| Capacitors | Decoupling Capacitor | 100 nF | 3 | C14663 | LCSC | $0.01 | $0.03 | Noise filter |
+| Capacitors | Crystal Load Cap | 33 pF | 2 | C1663 | LCSC | $0.02 | $0.04 | Load matching |
+| Manufacturing | PCB Fabrication | 2-layer 1.6mm | 5 | — | PCBWay | $4.00 | $4.00 | HASL finish |
+| Manufacturing | PCBA Assembly | Economic SMT | 2 | — | PCBWay | $26.30 | $26.30 | Auto assembly |
+| Manufacturing | 3D Case Enclosure | Custom Housing | 1 | — | 3D Vendor | $15.00 | $15.00 | CAD case |
 
-### Totals
-- **Components only:** ~$3.50 (LCSC parts)
-- **PCB + Assembly (5 boards):** ~$35.97 (JLCPCB)
+## Cost Summary
 
-**Credits**
- This porject Uses :
- - EasyEDA
- - [@notaroomba](https://github.com/notaroomba/) git hub for readme strcture 
- - [@GarageTinkering](https://www.youtube.com/@GarageTinkering) Fpr Case tutorial [Link](https://www.youtube.com/watch?v=7ax-VmkeHrE&list=PPSV)
+- **Components (LCSC):** $3.74
+- **PCB + PCBA (PCBWay):** $30.30
+- **3D Case:** $15.00
+- **TOTAL:** ~$49.04
 
+**Credits & Inspiration**
+ This project relies on and was inspired by:
+ - **EasyEDA Pro Canvas** development suite.
+ - [@notaroomba](https://github.com) GitHub layout for the structural README layout inspiration.
+ - [@GarageTinkering](https://youtube.com) Fusion 360 enclosure modeling process [Video Link](https://youtube.com).
 
+ Thank you [@hackclub](https://github.com/hackclub) : )
