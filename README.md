@@ -104,6 +104,11 @@ To view or enhance this PCB design using EasyEDA Pro:
 ![Lid](assets/lid.png)
 
 ---
+## Assembly Instructions
+
+Once the PCB has been manufactured and assembled, place the completed PCBA into the 3D-printed base and align the PCB mounting holes with the mounting pillars. Secure the PCB to the base using **M2.5 screws**, making sure the board is sitting flat and the USB ports line up correctly with the case openings. After the PCB is secured, place the lid over the base and align it with the four corner pillars. Press the lid down until it sits securely in place. Finally, connect a USB cable to the upstream Type-C port and plug it into a host device to power and test the hub. The four downstream USB ports can then be used to connect USB devices.
+
+---
 
 ## PCBWay PCBA Quote
 
